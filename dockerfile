@@ -38,7 +38,6 @@ RUN mvn dependency:get -DgroupId=com.github.wvengen -DartifactId=proguard-maven-
 RUN mvn dependency:get -DgroupId=com.akathist.maven.plugins.launch4j -DartifactId=launch4j-maven-plugin -Dversion=1.7.21
 RUN mvn dependency:get -DgroupId=org.jacoco -DartifactId=jacoco-maven-plugin -Dversion=0.7.9
 RUN mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=exec-maven-plugin -Dversion=1.6.0
-RUN mvn dependency:get -DgroupId=org.sonatype.plugins -DartifactId=nexus-staging-maven-plugin -Dversion=1.6.8
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-source-plugin -Dversion=3.0.1
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-javadoc-plugin -Dversion=3.0.0
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-gpg-plugin -Dversion=1.6
@@ -55,7 +54,6 @@ RUN mvn dependency:get -DgroupId=org.junit.platform -DartifactId=junit-platform-
 RUN mvn dependency:get -DgroupId=org.junit.platform -DartifactId=junit-platform-surefire-provider -Dversion=1.0.2
 RUN mvn dependency:get -DgroupId=org.sonatype.plexus -DartifactId=plexus-cipher -Dversion=1.7
 RUN mvn dependency:get -DgroupId=org.apache.httpcomponents -DartifactId=httpclient -Dversion=4.3.5
-RUN mvn dependency:get -DgroupId=commons-beanutils -DartifactId=commons-beanutils-core -Dversion=1.8.3
 RUN mvn dependency:get -DgroupId=com.intellij -DartifactId=annotations -Dversion=9.0.4
 RUN mvn dependency:get -DgroupId=org.slf4j -DartifactId=slf4j-api -Dversion=1.7.7
 RUN mvn dependency:get -DgroupId=logkit -DartifactId=logkit -Dversion=1.0.1
