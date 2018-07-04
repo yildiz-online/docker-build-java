@@ -6,7 +6,7 @@ RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && ap
 RUN apt-get install -y -q wget unzip
 RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
 RUN apt-get install -y -q wget unzip
-RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/openjdk_linux-x64.tar.gz
+RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/oraclejdk_linux-x64.tar.gz
 RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/apache-maven.zip
 RUN tar -xzf openjdk_linux-x64.tar.gz
 RUN rm openjdk_linux-x64.tar.gz
