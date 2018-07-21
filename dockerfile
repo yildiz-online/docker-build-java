@@ -12,9 +12,9 @@ RUN unzip -q apache-maven.zip
 RUN rm apache-maven.zip
 RUN chmod 777 /apache-maven/bin/mvn
 ENV M2_HOME=/apache-maven
-ENV JAVA_HOME=/java
+ENV JAVA_HOME=/oraclejdk_linux-x64
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
-RUN cd /java
+RUN cd /oraclejdk_linux-x64
 RUN ls -l
 RUN java -version
 RUN mvn -v
