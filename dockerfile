@@ -4,10 +4,10 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
 RUN apt-get install -y -q wget unzip curl
-RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/oraclejdk_linux-x64.tar.gz
+RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/oraclejdk_linux-x64.zip
 RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/apache-maven.zip
-RUN tar -xzf -C java oraclejdk_linux-x64.tar.gz
-RUN rm oraclejdk_linux-x64.tar.gz
+RUN unzip -q java oraclejdk_linux-x64.zip
+RUN rm oraclejdk_linux-x64.zip
 RUN unzip -q apache-maven.zip
 RUN rm apache-maven.zip
 RUN chmod 777 /apache-maven/bin/mvn
