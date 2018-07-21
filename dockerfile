@@ -6,7 +6,7 @@ RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && ap
 RUN apt-get install -y -q wget unzip curl
 RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/oraclejdk_linux-x64.zip
 RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/apache-maven.zip
-RUN unzip -q java oraclejdk_linux-x64.zip
+RUN unzip -q oraclejdk_linux-x64.zip
 RUN rm oraclejdk_linux-x64.zip
 RUN unzip -q apache-maven.zip
 RUN rm apache-maven.zip
