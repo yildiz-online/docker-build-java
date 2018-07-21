@@ -6,15 +6,15 @@ RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && ap
 RUN apt-get install -y -q wget unzip curl
 RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/oraclejdk_linux-x64.tar.gz
 RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/apache-maven.zip
-RUN tar -xzf oraclejdk_linux-x64.tar.gz
+RUN tar -xzf -C java oraclejdk_linux-x64.tar.gz
 RUN rm oraclejdk_linux-x64.tar.gz
 RUN unzip -q apache-maven.zip
 RUN rm apache-maven.zip
 RUN chmod 777 /apache-maven/bin/mvn
 ENV M2_HOME=/apache-maven
-ENV JAVA_HOME=/oraclejdk_linux-x64
+ENV JAVA_HOME=/java
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
-RUN cd /oraclejdk_linux-x64
+RUN cd /java
 RUN ls -l
 RUN java -version
 RUN mvn -v
