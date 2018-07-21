@@ -14,6 +14,8 @@ RUN chmod 777 /apache-maven/bin/mvn
 ENV M2_HOME=/apache-maven
 ENV JAVA_HOME=/oraclejdk_linux-x64
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
+RUN cd /oraclejdk_linux-x64
+RUN ls -l
 RUN java -version
 RUN mvn -v
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-clean-plugin -Dversion=3.0.0
