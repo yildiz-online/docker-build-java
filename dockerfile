@@ -3,7 +3,7 @@ FROM ubuntu:bionic
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
-RUN apt-get install -y -q wget unzip curl
+RUN apt-get install -y -q wget unzip curl gnupg2
 RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/oraclejdk_linux-x64.zip
 RUN wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/apache-maven.zip
 RUN unzip -q oraclejdk_linux-x64.zip
