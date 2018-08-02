@@ -18,7 +18,7 @@ RUN chmod 777 /oraclejdk_linux-x64/bin/java
 RUN java -version
 RUN mvn -v
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-clean-plugin -Dversion=3.1.0
-RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-compiler-plugin -Dversion=3.7.0
+RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-compiler-plugin -Dversion=3.8.0
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-deploy-plugin -Dversion=2.8.2
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-failsafe-plugin -Dversion=2.19.1
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-install-plugin -Dversion=2.5.2
@@ -47,14 +47,14 @@ RUN mvn dependency:get -DgroupId=com.spotify -DartifactId=dockerfile-maven-plugi
 RUN mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-enforcer-plugin -Dversion=1.4.1
 RUN mvn dependency:get -DgroupId=org.owasp -DartifactId=dependency-check-maven -Dversion=3.0.2
 RUN mvn dependency:get -DgroupId=pl.project13.maven -DartifactId=git-commit-id-plugin -Dversion=2.2.4
-RUN mvn dependency:get -DgroupId=org.junit.jupiter -DartifactId=junit-jupiter-api -Dversion=5.0.2
-RUN mvn dependency:get -DgroupId=org.junit.jupiter -DartifactId=junit-jupiter-engine -Dversion=5.0.2
-RUN mvn dependency:get -DgroupId=org.junit.platform -DartifactId=junit-platform-launcher -Dversion=1.0.2
-RUN mvn dependency:get -DgroupId=org.junit.platform -DartifactId=junit-platform-surefire-provider -Dversion=1.0.2
+RUN mvn dependency:get -DgroupId=org.junit.jupiter -DartifactId=junit-jupiter-api -Dversion=5.1.0
+RUN mvn dependency:get -DgroupId=org.junit.jupiter -DartifactId=junit-jupiter-engine -Dversion=5.1.0
+RUN mvn dependency:get -DgroupId=org.junit.platform -DartifactId=junit-platform-launcher -Dversion=1.1.0
+RUN mvn dependency:get -DgroupId=org.junit.platform -DartifactId=junit-platform-surefire-provider -Dversion=1.1.0
 RUN mvn dependency:get -DgroupId=org.sonatype.plexus -DartifactId=plexus-cipher -Dversion=1.7
 RUN mvn dependency:get -DgroupId=org.apache.httpcomponents -DartifactId=httpclient -Dversion=4.3.5
 RUN mvn dependency:get -DgroupId=com.intellij -DartifactId=annotations -Dversion=9.0.4
-RUN mvn dependency:get -DgroupId=org.slf4j -DartifactId=slf4j-api -Dversion=1.7.7
+RUN mvn dependency:get -DgroupId=org.slf4j -DartifactId=slf4j-api -Dversion=1.7.25
 RUN mvn dependency:get -DgroupId=logkit -DartifactId=logkit -Dversion=1.0.1
 RUN mvn dependency:get -DgroupId=avalon-framework -DartifactId=avalon-framework -Dversion=4.1.3
 RUN mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=build-helper-maven-plugin -Dversion=3.0.0
