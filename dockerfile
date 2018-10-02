@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y -q wget unzip curl gnupg2 \
 && mvn dependency:get -DgroupId=org.sonarsource.scanner.maven -DartifactId=sonar-maven-plugin -Dversion=3.4.1.1168 \
 && mvn dependency:get -DgroupId=com.github.wvengen -DartifactId=proguard-maven-plugin -Dversion=2.0.14 \
 && mvn dependency:get -DgroupId=com.akathist.maven.plugins.launch4j -DartifactId=launch4j-maven-plugin -Dversion=1.7.21 \
-&& mvn dependency:get -DgroupId=org.jacoco -DartifactId=jacoco-maven-plugin -Dversion=0.8.1 \
+&& mvn dependency:get -DgroupId=org.jacoco -DartifactId=jacoco-maven-plugin -Dversion=0.8.2 \
 && mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=exec-maven-plugin -Dversion=1.6.0 \
 && mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-source-plugin -Dversion=3.0.1 \
 && mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-javadoc-plugin -Dversion=3.0.0 \
