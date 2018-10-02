@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y -q wget unzip curl gnupg2 \
 && mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-scm-plugin -Dversion=1.10.0 \
 && mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-release-plugin -Dversion=2.5.3 \
 && mvn dependency:get -DgroupId=org.sonatype.plugins -DartifactId=nexus-staging-maven-plugin -Dversion=1.6.8 \
-&& mvn dependency:get -DgroupId=org.sonarsource.scanner.maven -DartifactId=sonar-maven-plugin -Dversion=3.4.1.1168 \
+&& mvn dependency:get -DgroupId=org.sonarsource.scanner.maven -DartifactId=sonar-maven-plugin -Dversion=3.5.0.1254 \
 && mvn dependency:get -DgroupId=com.github.wvengen -DartifactId=proguard-maven-plugin -Dversion=2.0.14 \
 && mvn dependency:get -DgroupId=com.akathist.maven.plugins.launch4j -DartifactId=launch4j-maven-plugin -Dversion=1.7.21 \
 && mvn dependency:get -DgroupId=org.jacoco -DartifactId=jacoco-maven-plugin -Dversion=0.8.2 \
