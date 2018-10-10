@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
 && chmod 777 /apache-maven/bin/mvn \
 && chmod 777 /openjdk-11_linux-x64/bin/java \
 && chmod 777 /openjdk-11_linux-x64/bin/javadoc \
-&& ls \
 && apt-get remove -y -q unzip wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && java -version \
 && mvn -v \
