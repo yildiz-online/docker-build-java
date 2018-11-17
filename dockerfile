@@ -63,6 +63,7 @@ RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
 && mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=versions-maven-plugin -Dversion=2.5 \
 && mvn dependency:get -DgroupId=org.mockito -DartifactId=mockito-core -Dversion=2.22.0 \
 && mvn dependency:get -DgroupId=junit -DartifactId=junit -Dversion=4.8.2 \
+&& mvn dependency:get -DgroupId=com.thoughtworks.qdox -DartifactId=qdox -Dversion=2.0-M9 \
 
 && mkdir /src
 WORKDIR /src
