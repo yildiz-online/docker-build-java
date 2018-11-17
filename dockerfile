@@ -61,6 +61,8 @@ RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
 && mvn dependency:get -DgroupId=avalon-framework -DartifactId=avalon-framework -Dversion=4.1.3 \
 && mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=build-helper-maven-plugin -Dversion=3.0.0 \
 && mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=versions-maven-plugin -Dversion=2.5 \
+&& mvn dependency:get -DgroupId=org.mockito -DartifactId=mockito-core -Dversion=2.22.0 \
+&& mvn dependency:get -DgroupId=junit -DartifactId=junit -Dversion=4.8.2 \
 
 && mkdir /src
 WORKDIR /src
