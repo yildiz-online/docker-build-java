@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
 && mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-antrun-plugin -Dversion=1.8 \
 && mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-assembly-plugin -Dversion=3.1.0 \
 && mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-dependency-plugin -Dversion=3.1.1 \
-&& mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-scm-plugin -Dversion=1.10.0 \
+&& mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-scm-plugin -Dversion=1.11.1 \
 && mvn dependency:get -DgroupId=org.apache.maven.plugins -DartifactId=maven-release-plugin -Dversion=2.5.3 \
 && mvn dependency:get -DgroupId=org.sonatype.plugins -DartifactId=nexus-staging-maven-plugin -Dversion=1.6.8 \
 && mvn dependency:get -DgroupId=org.sonarsource.scanner.maven -DartifactId=sonar-maven-plugin -Dversion=3.5.0.1254 \
@@ -60,8 +60,8 @@ RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
 && mvn dependency:get -DgroupId=logkit -DartifactId=logkit -Dversion=1.0.1 \
 && mvn dependency:get -DgroupId=avalon-framework -DartifactId=avalon-framework -Dversion=4.1.3 \
 && mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=build-helper-maven-plugin -Dversion=3.0.0 \
-&& mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=versions-maven-plugin -Dversion=2.5 \
-&& mvn dependency:get -DgroupId=org.mockito -DartifactId=mockito-core -Dversion=2.22.0 \
+&& mvn dependency:get -DgroupId=org.codehaus.mojo -DartifactId=versions-maven-plugin -Dversion=2.7 \
+&& mvn dependency:get -DgroupId=org.mockito -DartifactId=mockito-core -Dversion=2.23.0 \
 && mvn dependency:get -DgroupId=junit -DartifactId=junit -Dversion=4.8.2 \
 && mvn dependency:get -DgroupId=com.thoughtworks.qdox -DartifactId=qdox -Dversion=2.0-M9 \
 
