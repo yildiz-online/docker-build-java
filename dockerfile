@@ -64,6 +64,8 @@ RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
 && mvn dependency:get -DgroupId=org.mockito -DartifactId=mockito-core -Dversion=2.23.0 \
 && mvn dependency:get -DgroupId=junit -DartifactId=junit -Dversion=4.8.2 \
 && mvn dependency:get -DgroupId=com.thoughtworks.qdox -DartifactId=qdox -Dversion=2.0-M9 \
+&& mvn dependency:get -DgroupId=ch.qos.logback -DartifactId=logback-classic -Dversion=1.2.3 \
+&& mvn dependency:get -DgroupId=ch.qos.logback -DartifactId=logback-core -Dversion=1.2.3 \
 
 && mkdir /src
 WORKDIR /src
