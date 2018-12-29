@@ -5,7 +5,7 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV M2_HOME=/apache-maven
 ENV JAVA_HOME=/openjdk-11_linux-x64
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
-RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
+RUN apt-get update && apt-get install -y -q wget unzip gnupg2 git \
 && wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/openjdk-11_linux-x64.zip\
 && wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/apache-maven.zip \
 && unzip -q openjdk-11_linux-x64.zip \
