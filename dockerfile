@@ -66,6 +66,7 @@ RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
 && mvn dependency:get -DgroupId=com.thoughtworks.qdox -DartifactId=qdox -Dversion=2.0-M9 \
 && mvn dependency:get -DgroupId=ch.qos.logback -DartifactId=logback-classic -Dversion=1.2.3 \
 && mvn dependency:get -DgroupId=ch.qos.logback -DartifactId=logback-core -Dversion=1.2.3 \
+&& mvn dependency:get -DgroupId=com.splunk.logging -DartifactId=splunk-library-javalogging -Dversion=1.6.2 \
 
 && mkdir /src
 WORKDIR /src
