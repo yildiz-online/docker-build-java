@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
-cd /home \
+RUN cd /home \
 && ls
 
 ENV M2_HOME=/apache-maven
