@@ -2,6 +2,9 @@ FROM ubuntu:bionic
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
+cd /home \
+&& ls
+
 ENV M2_HOME=/apache-maven
 ENV JAVA_HOME=/openjdk-11_linux-x64
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
