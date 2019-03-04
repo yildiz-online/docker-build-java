@@ -22,9 +22,7 @@ RUN apt-get update && apt-get install -y -q wget unzip gnupg2 \
 && mkdir /build-resources \
 && mkdir /src
 
-COPY deploy-maven-central.sh build-resources
 COPY settings.xml build-resources
 COPY private-key.gpg.enc build-resources
-COPY maven-version-rules.xml build-resources
 
 WORKDIR /src
