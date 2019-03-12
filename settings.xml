@@ -75,13 +75,6 @@
             <enabled>false</enabled>
           </snapshots>
           <url>http://repo.spring.io/libs-release</url>
-                    <configuration>
-    <httpConfiguration>
-      <all>
-        <connectionTimeout>60000</connectionTimeout>
-        <readTimeout>60000</readTimeout>
-      </all>
-    </httpConfiguration>
         </repository>
         <repository>
           <id>yildiz-engine-nexus-release</id>
@@ -110,14 +103,6 @@
             <enabled>false</enabled>
           </snapshots>
           <url>http://repo.spring.io/libs-release</url>
-          <configuration>
-    <httpConfiguration>
-      <all>
-        <connectionTimeout>60000</connectionTimeout>
-        <readTimeout>60000</readTimeout>
-      </all>
-    </httpConfiguration>
-  </configuration>
         </pluginRepository>
       </pluginRepositories>
     </profile>
