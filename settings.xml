@@ -67,14 +67,15 @@
           <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
         <repository>
-          <id>spring</id>
+          <id>splunk-artifactory</id> 
+          <name>Splunk Releases</name> 
+          <url>http://splunk.jfrog.io/splunk/ext-releases-local</url>
           <releases>
             <enabled>true</enabled>
           </releases>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <url>http://repo.spring.io/libs-release</url>
         </repository>
         <repository>
           <id>yildiz-engine-nexus-release</id>
@@ -95,14 +96,15 @@
       </repositories>
       <pluginRepositories>
         <pluginRepository>
-          <id>spring</id>
+          <id>splunk-artifactory</id> 
+          <name>Splunk Releases</name> 
+          <url>http://splunk.jfrog.io/splunk/ext-releases-local</url>
           <releases>
             <enabled>true</enabled>
           </releases>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <url>http://repo.spring.io/libs-release</url>
         </pluginRepository>
       </pluginRepositories>
     </profile>
