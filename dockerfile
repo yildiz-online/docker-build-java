@@ -26,3 +26,4 @@ COPY settings.xml build-resources
 COPY private-key.gpg.enc build-resources
 
 WORKDIR /src
+
