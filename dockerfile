@@ -5,6 +5,12 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV M2_HOME=/apache-maven
 ENV JAVA_HOME=/openjdk-12_linux-x64
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
+# Set the locale
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+&& locale-gen
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 RUN apt-get update && apt-get install -y -q wget unzip gnupg2 curl jq \
 && wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/openjdk-12_linux-x64.zip\
 && wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/apache-maven.zip \
