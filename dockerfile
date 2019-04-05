@@ -28,7 +28,6 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
-ENV MAVEN_OPTS $MAVEN_OPTS -Dorg.slf4j.simpleLogger.defaultLogLevel=warn
 
 COPY settings.xml build-resources
 COPY private-key.gpg.enc build-resources
