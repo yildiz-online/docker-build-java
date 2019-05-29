@@ -67,17 +67,6 @@
           <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
         <repository>
-          <id>splunk-artifactory</id> 
-          <name>Splunk Releases</name> 
-          <url>http://splunk.jfrog.io/splunk/ext-releases-local</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-        <repository>
           <id>yildiz-engine-nexus-release</id>
           <releases>
             <enabled>true</enabled>
@@ -94,19 +83,6 @@
           <snapshots><enabled>false</enabled></snapshots>
         </repository>
       </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>splunk-artifactory</id> 
-          <name>Splunk Releases</name> 
-          <url>http://splunk.jfrog.io/splunk/ext-releases-local</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
-      </pluginRepositories>
     </profile>
   </profiles>
 </settings>
