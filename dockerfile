@@ -33,6 +33,8 @@ COPY settings.xml build-resources
 COPY private-key.gpg.enc build-resources
 COPY deploy-maven-central.sh build-resources
 
+RUN chmod 777 /build-resources/deploy-maven-central.sh
+
 WORKDIR /src
 
 ENTRYPOINT ../build-resources/deploy-maven-central.sh
