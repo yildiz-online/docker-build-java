@@ -35,3 +35,5 @@ COPY deploy-maven-central.sh build-resources
 
 WORKDIR /src
 
+ENTRYPOINT ../build-resources/deploy-maven-central.sh
+
