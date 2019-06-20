@@ -31,7 +31,7 @@ ENV LC_ALL en_US.UTF-8
 
 COPY settings.xml build-resources
 COPY private-key.gpg.enc build-resources
-COPY deploy-maven-central.sh src
+COPY deploy-maven-central.sh build-resources
 
 WORKDIR /src
 
