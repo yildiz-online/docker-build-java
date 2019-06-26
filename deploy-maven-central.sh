@@ -17,7 +17,7 @@ SONAR_ORGANIZATION=$(echo ${SECRETS} | jq -r '.data.SONAR_ORGANIZATION')
 
 echo "Building $BRANCH branch"
 
-if [ "NO_DEPLOY" = "true" ]; then
+if [ "$NO_DEPLOY" = "true" ]; then
   if [ "$BRANCH" = "develop" ]; then
     mvn -V -s ../build-resources/settings.xml org.jacoco:jacoco-maven-plugin:prepare-agent clean package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR
   elif [ "$BRANCH" = "master" ]; then
