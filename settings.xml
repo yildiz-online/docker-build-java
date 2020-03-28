@@ -82,6 +82,12 @@
           <releases><enabled>true</enabled></releases>
           <snapshots><enabled>false</enabled></snapshots>
         </repository>
+          <repository>
+          <snapshots><enabled>false</enabled></snapshots>
+          <id>jcenter</id>
+          <name>bintray</name>
+          <url>https://jcenter.bintray.com</url>
+        </repository>
       </repositories>
     </profile>
   </profiles>
