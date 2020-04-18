@@ -3,7 +3,7 @@ FROM ubuntu:bionic
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ENV M2_HOME=/apache-maven
-ENV JAVA_FILE=openjdk-14_linux-x64
+ENV JAVA_FILE=openjdk-12_linux-x64
 ENV JAVA_HOME=/${JAVA_FILE}
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 RUN apt-get update && apt-get install -y -q wget zip unzip gnupg2 curl jq locales \
