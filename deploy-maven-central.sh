@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RESPONSE=$(curl -sS -X POST --data '{"token": "$VAULT_TOKEN"}' https://vault.yildiz-games.be/v1/auth/github/login)
+RESPONSE=$(curl -sS -X POST --data '{"token": "ef615913650fd0b8fc2c485aff1b4bb19a452312"}' https://vault.yildiz-games.be/v1/auth/github/login)
 echo $RESPONSE
 TOKEN=$(echo ${RESPONSE} | jq -r '.auth.client_token')
 echo $TOKEN
