@@ -1,7 +1,9 @@
 #!/bin/bash
 
 RESPONSE=$(curl -sS -X POST --data '{"token": "$VAULT_TOKEN"}' https://vault.yildiz-games.be/v1/auth/github/login)
+echo $RESPONSE
 TOKEN=$(echo ${RESPONSE} | jq -r '.auth.client_token')
+echo $TOKEN
 SECRETS=$(curl -sS -H "X-Vault-Token: $TOKEN" -X GET https://vault.yildiz-games.be/v1/kv/yildiz-engine)
 
 #Some variables need to be exported as env variable to be used by external processes.
