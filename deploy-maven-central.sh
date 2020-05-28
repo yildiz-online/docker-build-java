@@ -1,9 +1,15 @@
 #!/bin/bash
 
-RESPONSE=$(curl -sS -X POST --data '{"token": "ef615913650fd0b8fc2c485aff1b4bb19a452312"}' https://vault.yildiz-games.be/v1/auth/github/login)
-echo $RESPONSE
+#To create the quotes properly.
+generate_post_data()
+{
+  cat <<EOF
+{"token": "$VAULT_TOKEN"}  
+EOF
+}
+
+RESPONSE=$(curl -sS -X POST --data "$(generate_post_data)" https://vault.yildiz-games.be/v1/auth/github/login)
 TOKEN=$(echo ${RESPONSE} | jq -r '.auth.client_token')
-echo $TOKEN
 SECRETS=$(curl -sS -H "X-Vault-Token: $TOKEN" -X GET https://vault.yildiz-games.be/v1/kv/yildiz-engine)
 
 #Some variables need to be exported as env variable to be used by external processes.
