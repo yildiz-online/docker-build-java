@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y -q wget zip unzip gnupg2 curl jq locale
 && apt-get remove -y -q unzip wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && java -version \
 && mvn -v \
-
 && mkdir /build-resources \
+&& mkdir /root/.ssh \
 && mkdir /src
 
 # Set the locale
