@@ -30,6 +30,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+ssh-keyscan -H yildiz-games.be >> ~/.ssh/known_hosts
 COPY settings.xml build-resources
 COPY private-key.gpg.enc build-resources
 COPY deploy-maven-central.sh build-resources
