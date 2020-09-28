@@ -33,7 +33,7 @@ RUN wget -q ${MAVEN_URL} \
 RUN chmod 777 /${MAVEN_DIRECTORY}/bin/mvn \
 && chmod 777 /${JAVA_DIRECTORY}/bin/java \
 && chmod 777 /${JAVA_DIRECTORY}/bin/javadoc \
-&& apt-get remove -y -q unzip wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
+&& apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && java -version \
 && mvn -v \
 && mkdir /build-resources \
