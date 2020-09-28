@@ -2,20 +2,37 @@ FROM ubuntu:bionic
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
-ENV M2_HOME=/apache-maven
-ENV JAVA_FILE=openjdk-12_linux-x64
-ENV JAVA_HOME=/${JAVA_FILE}
+ENV JAVA_ZULU_VERSION=15.27.17
+ENV JAVA_VERSION=15.0.0
+ENV MAVEN_VERSION=3.6.3
+
+ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
+ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
+ENV JAVA_URL=https://cdn.azul.com/zulu/bin/${JAVA_FILE}
+ENV JAVA_HOME=/${JAVA_DIRECTORY}
+
+
+ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
+ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
+ENV MAVEN_URL=https://mirror.dkd.de/apache/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
+ENV M2_HOME=/${MAVEN_DIRECTORY}
+
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
-RUN apt-get update && apt-get install -y -q wget zip unzip gnupg2 curl jq locales \
-&& wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/${JAVA_FILE}.zip\
-&& wget https://bitbucket.org/yildiz-engine-team/build-application-binaries/downloads/apache-maven.zip \
-&& unzip -q ${JAVA_FILE}.zip \
-&& rm ${JAVA_FILE}.zip \
-&& unzip -q apache-maven.zip \
-&& rm apache-maven.zip\
-&& chmod 777 /apache-maven/bin/mvn \
-&& chmod 777 /${JAVA_FILE}/bin/java \
-&& chmod 777 /${JAVA_FILE}/bin/javadoc \
+
+
+RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales
+
+RUN wget -q ${JAVA_URL} \
+&& tar -xzf ${JAVA_FILE} \
+&& rm ${JAVA_FILE}
+
+RUN wget -q ${MAVEN_URL} \
+&& tar -xzf ${MAVEN_FILE} \
+&& rm ${MAVEN_FILE}
+
+RUN chmod 777 /${MAVEN_DIRECTORY}/bin/mvn \
+&& chmod 777 /${JAVA_DIRECTORY}/bin/java \
+&& chmod 777 /${JAVA_DIRECTORY}/bin/javadoc \
 && apt-get remove -y -q unzip wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && java -version \
 && mvn -v \
