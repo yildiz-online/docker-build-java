@@ -2,8 +2,8 @@ FROM ubuntu:focal
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
-ENV JAVA_ZULU_VERSION=15.27.17
-ENV JAVA_VERSION=15.0.0
+ENV JAVA_ZULU_VERSION=15.28.13
+ENV JAVA_VERSION=15.0.1
 ENV MAVEN_VERSION=3.6.3
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
@@ -30,9 +30,9 @@ RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
 && rm ${MAVEN_FILE}
 
-RUN chmod 777 /${MAVEN_DIRECTORY}/bin/mvn \
-&& chmod 777 /${JAVA_DIRECTORY}/bin/java \
-&& chmod 777 /${JAVA_DIRECTORY}/bin/javadoc \
+RUN chmod +x /${MAVEN_DIRECTORY}/bin/mvn \
+&& chmod +x /${JAVA_DIRECTORY}/bin/java \
+&& chmod +x /${JAVA_DIRECTORY}/bin/javadoc \
 && apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && java -version \
 && mvn -v \
@@ -52,7 +52,7 @@ COPY settings.xml build-resources
 COPY private-key.gpg.enc build-resources
 COPY deploy-maven-central.sh build-resources
 
-RUN chmod 777 /build-resources/deploy-maven-central.sh
+RUN chmod +x /build-resources/deploy-maven-central.sh
 
 WORKDIR /src
 
