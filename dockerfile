@@ -1,9 +1,8 @@
 FROM ubuntu:focal
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
-
-ENV JAVA_ZULU_VERSION=15.28.13
-ENV JAVA_VERSION=15.0.1
+ENV JAVA_ZULU_VERSION=16.28.11
+ENV JAVA_VERSION=16.0.0
 ENV MAVEN_VERSION=3.6.3
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
