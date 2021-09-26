@@ -25,6 +25,10 @@ export REPO_PASSWORD=$(echo ${SECRETS} | jq -r '.data.REPO_PASSWORD')
 SONAR=$(echo ${SECRETS} | jq -r '.data.SONAR')
 SONAR_ORGANIZATION=$(echo ${SECRETS} | jq -r '.data.SONAR_ORGANIZATION')
 
+
+export MAVEN_OPTS="--add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt.font=ALL-UNNAMED"
+
+
 echo "Building $BRANCH branch"
 
 if [ "$NO_DEPLOY" = "true" ]; then
