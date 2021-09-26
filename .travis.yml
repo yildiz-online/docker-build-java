@@ -6,12 +6,11 @@ services:
   - docker
 
 before_install:
-  - docker build -t moussavdb/build-java:17 -t moussavdb/build-java:build_$TRAVIS_BUILD_NUMBER .
+  - docker build -t moussavdb/build-java:17 .
 script:
   - docker images moussavdb/build-java
   
 after_success:
   - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
     docker push moussavdb/build-java:17;
-    docker push moussavdb/build-java:build_$TRAVIS_BUILD_NUMBER;
 
