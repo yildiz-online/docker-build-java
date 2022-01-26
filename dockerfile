@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
-ENV JAVA_ZULU_VERSION=17.30.15
+ENV JAVA_ZULU_VERSION=17.32.13
 ENV JAVA_VERSION=17.0.2
 ENV MAVEN_VERSION=3.8.4
 
