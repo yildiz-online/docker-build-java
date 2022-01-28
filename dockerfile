@@ -13,7 +13,7 @@ ENV JAVA_HOME=/${JAVA_DIRECTORY}
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
 ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
-ENV MAVEN_URL=https://mirror.dkd.de/apache/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
+ENV MAVEN_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
 ENV M2_HOME=/${MAVEN_DIRECTORY}
 
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
