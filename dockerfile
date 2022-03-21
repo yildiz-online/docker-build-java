@@ -3,7 +3,7 @@ FROM ubuntu:focal
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV JAVA_ZULU_VERSION=17.32.13
 ENV JAVA_VERSION=17.0.2
-ENV MAVEN_VERSION=3.8.4
+ENV MAVEN_VERSION=3.8.5
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
