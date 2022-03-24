@@ -8,7 +8,7 @@ generate_post_data()
 EOF
 }
 
-RESPONSE=$(curl -sS -X POST --data "$(generate_post_data)" https://vault.yildiz-games.be/v1/auth/github/login)
+RESPONSE=$(curl --connect-timeout 10 --max-time 15 -sS -X POST --data "$(generate_post_data)" https://vault.yildiz-games.be/v1/auth/github/login)
 TOKEN=$(echo ${RESPONSE} | jq -r '.auth.client_token')
 SECRETS=$(curl -sS -H "X-Vault-Token: $TOKEN" -X GET https://vault.yildiz-games.be/v1/kv/yildiz-engine)
 

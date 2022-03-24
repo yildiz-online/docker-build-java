@@ -1,9 +1,9 @@
 FROM ubuntu:focal
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
-ENV JAVA_ZULU_VERSION=17.28.13
-ENV JAVA_VERSION=17.0.0
-ENV MAVEN_VERSION=3.8.2
+ENV JAVA_ZULU_VERSION=17.32.13
+ENV JAVA_VERSION=17.0.2
+ENV MAVEN_VERSION=3.8.5
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
@@ -13,7 +13,7 @@ ENV JAVA_HOME=/${JAVA_DIRECTORY}
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
 ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
-ENV MAVEN_URL=https://mirror.dkd.de/apache/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
+ENV MAVEN_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
 ENV M2_HOME=/${MAVEN_DIRECTORY}
 
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
