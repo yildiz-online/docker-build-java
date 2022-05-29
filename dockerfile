@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV JAVA_ZULU_VERSION=17.34.19
@@ -17,7 +17,6 @@ ENV MAVEN_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/$
 ENV M2_HOME=/${MAVEN_DIRECTORY}
 
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
-
 
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
