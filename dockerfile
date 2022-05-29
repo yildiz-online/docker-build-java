@@ -18,8 +18,6 @@ ENV M2_HOME=/${MAVEN_DIRECTORY}
 
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
-hostnamectl
-
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
 RUN wget -q ${JAVA_URL} \
