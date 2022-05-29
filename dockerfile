@@ -18,6 +18,7 @@ ENV M2_HOME=/${MAVEN_DIRECTORY}
 
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
+lsb_release -d
 
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
