@@ -1,5 +1,9 @@
-sudo: required
+dist: jammy
 
+git:
+  depth: false
+
+os: linux
 language: generic
 
 services:
