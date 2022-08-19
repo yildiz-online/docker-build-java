@@ -1,8 +1,8 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
-ENV JAVA_ZULU_VERSION=17.34.19
-ENV JAVA_VERSION=17.0.3
+ENV JAVA_ZULU_VERSION=17.36.13
+ENV JAVA_VERSION=17.0.4
 ENV MAVEN_VERSION=3.8.6
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
