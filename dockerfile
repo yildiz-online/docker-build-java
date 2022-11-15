@@ -6,10 +6,11 @@ ENV JAVA_VERSION=17.0.5
 ENV MAVEN_VERSION=3.8.6
 
 RUN uname -m
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
+RUN TARGETARCH = uname -m \
+if [ "$TARGETARCH" = "amd64" ]; then \
 export ARCH=x64; \
 echo "AMD64"; \
-elif [ "$TARGETARCH" = "arm64" ]; then \
+elif [ "$TARGETARCH" = "aarch64" ]; then \
 export ARCH=aarch64; \
 echo "ARM64"; \
 fi;
