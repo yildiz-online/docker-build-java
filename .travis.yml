@@ -8,13 +8,17 @@ language: generic
 
 services:
   - docker
+  
+arch:
+  - amd64
+  - arm64  
 
 before_install:
   - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
-  - docker build -t moussavdb/build-java:17 .
+  - docker build -t moussavdb/build-java-$TRAVIS_CPU_ARCH:17 .
 script:
-  - docker images moussavdb/build-java
+  - docker images moussavdb/build-java-$TRAVIS_CPU_ARCH
   
 after_success:
-  - docker push moussavdb/build-java:17;
+  - docker push moussavdb/build-java-$TRAVIS_CPU_ARCH:17;
 
