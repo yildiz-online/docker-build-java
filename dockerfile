@@ -5,11 +5,10 @@ ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
 ENV MAVEN_VERSION=3.8.6
 
-RUN TARGETARCH = uname -m \
-if [ "$TARGETARCH" = "x86_64" ]; then \
-export ARCH=x64; \
-elif [ "$TARGETARCH" = "aarch64" ]; then \
-export ARCH=aarch64; \
+RUN if [ uname -m = "x86_64" ]; then \
+    export ARCH=x64; \
+elif [ uname -m = "aarch64" ]; then \
+    export ARCH=aarch64; \
 fi;
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_$ARCH
