@@ -13,7 +13,7 @@ echo "AMD64"; \
 elif [ "$TARGETARCH" = "arm64" ]; then \
 export ARCH=aarch64; \
 echo "ARM64"; \
-fi; \
+fi;
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_$ARCH
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
