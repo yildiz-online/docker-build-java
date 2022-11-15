@@ -7,7 +7,7 @@ ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
 ENV MAVEN_VERSION=3.8.6
 
-if [ "$TARGETARCH" = "amd64" ]; then \
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
     ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64 ; \
 elif [ "$TARGETARCH" = "arm64" ]; then \
     ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64 ; \
