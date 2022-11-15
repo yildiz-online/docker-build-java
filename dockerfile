@@ -1,11 +1,18 @@
 FROM ubuntu:focal
 
+ARG TARGETARCH
+
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
 ENV MAVEN_VERSION=3.8.6
 
-ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
+if [ "$TARGETARCH" = "amd64" ]; then \
+    ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64 ; \
+elif [ "$TARGETARCH" = "arm64" ]; then \
+    ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64 ; \
+fi; \
+
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
 ENV JAVA_URL=https://cdn.azul.com/zulu/bin/${JAVA_FILE}
 ENV JAVA_HOME=/${JAVA_DIRECTORY}
