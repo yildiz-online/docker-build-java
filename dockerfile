@@ -9,7 +9,7 @@ RUN ARCH=`uname -m` && \
     if [ "$ARCH" == "x86_64" ]; then \
        echo "x86_64" \
     else \
-       echo $ARCH && \
+       echo $ARCH \
     fi
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
 export ARCH=x64; \
