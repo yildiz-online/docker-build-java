@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:focal
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV JAVA_ZULU_VERSION=17.38.21
