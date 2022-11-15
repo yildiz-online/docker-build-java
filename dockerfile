@@ -9,7 +9,7 @@ ENV MAVEN_VERSION=3.8.6
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then export ARCH=x64; elif [ "$TARGETARCH" = "arm64" ]; then export ARCH=aarch64; fi;
 
-ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCH}
+ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_$ARCH
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
 ENV JAVA_URL=https://cdn.azul.com/zulu/bin/${JAVA_FILE}
 ENV JAVA_HOME=/${JAVA_DIRECTORY}
