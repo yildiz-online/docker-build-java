@@ -5,7 +5,12 @@ ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
 ENV MAVEN_VERSION=3.8.6
 
-RUN echo $BUILDPLATFORM
+RUN ARCH=`uname -m` && \
+    if [ "$ARCH" == "x86_64" ]; then \
+       echo "x86_64" \
+    else \
+       echo $ARCH && \
+    fi
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
 export ARCH=x64; \
 echo "AMD64"; \
