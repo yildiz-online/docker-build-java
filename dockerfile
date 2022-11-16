@@ -25,6 +25,8 @@ RUN if [ "$CI_ARCH" = "amd64" ]; then wget -q https://cdn.azul.com/zulu/bin/zulu
 RUN tar -xzf java.tar.gz \
 && rm java.tar.gz
 
+RUN ls -l
+
 RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
 && rm ${MAVEN_FILE}
