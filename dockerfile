@@ -1,7 +1,5 @@
 FROM ubuntu:focal
 
-ARG CI_ARCH
-
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
@@ -18,11 +16,11 @@ ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
-RUN if [ "$CI_ARCH" = "amd64" ]; then \
-wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz -O java.tar.gz\; \
-elif [ "$CI_ARCH" = "arm64" ]; then \
-wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz -O java.tar.gz\; \
-fi;
+ARG CI_ARCH
+
+RUN if [ "$CI_ARCH" = "amd64" ]; then wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz -O java.tar.gz\; \
+    elif [ "$CI_ARCH" = "arm64" ]; then wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz -O java.tar.gz\; \
+    fi
 
 RUN tar -xzf java.tar.gz \
 && rm java.tar.gz
