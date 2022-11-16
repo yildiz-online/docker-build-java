@@ -6,6 +6,7 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
 ENV MAVEN_VERSION=3.8.6
+ENV ARCH=x64
 
 RUN if [ "$CI_ARCH" = "amd64" ]; then \
 export ARCH=x64; \
