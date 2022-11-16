@@ -18,14 +18,17 @@ RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip open
 
 ARG CI_ARCH
 
-RUN if [ "$CI_ARCH" = "amd64" ]; then wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz -O java.tar.gz; \
-    elif [ "$CI_ARCH" = "arm64" ]; then wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz -O java.tar.gz; \
+RUN if [ "$CI_ARCH" = "amd64" ]; then \
+    wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz -O java.tar.gz; \
+    tar -xzf java.tar.gz; \
+    mv zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64 java; \
+    elif [ "$CI_ARCH" = "arm64" ]; then \
+    wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz -O java.tar.gz; \
+    tar -xzf java.tar.gz; \
+    mv zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64 java; \
     fi
 
-RUN tar -xzf java.tar.gz -C java \
-&& rm java.tar.gz
-
-RUN ls -l
+RUN rm java.tar.gz
 
 RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
