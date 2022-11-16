@@ -22,13 +22,13 @@ RUN if [ "$CI_ARCH" = "amd64" ]; then \
     wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz -O java.tar.gz; \
     tar -xzf java.tar.gz; \
     mv zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64 java; \
+    rm java.tar.gz; \
     elif [ "$CI_ARCH" = "arm64" ]; then \
     wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz -O java.tar.gz; \
     tar -xzf java.tar.gz; \
     mv zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64 java; \
+    rm java.tar.gz; \
     fi
-
-RUN rm java.tar.gz
 
 RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
