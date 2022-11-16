@@ -7,21 +7,7 @@ ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
 ENV MAVEN_VERSION=3.8.6
 
-RUN if [ "$CI_ARCH" = "amd64" ]; then \
-export ARCH=x64; \
-elif [ "$CI_ARCH" = "arm64" ]; then \
-echo "ARM64"; \
-echo $ARCH; \
-export ARCH=aarch64; \
-echo $ARCH; \
-fi;
-
-RUN echo ${ARCH};
-ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_$ARCH
-ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
-ENV JAVA_URL=https://cdn.azul.com/zulu/bin/${JAVA_FILE}
-ENV JAVA_HOME=/${JAVA_DIRECTORY}
-RUN echo ${JAVA_URL}
+ENV JAVA_HOME=/java
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
 ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
@@ -32,17 +18,22 @@ ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
-RUN wget -q ${JAVA_URL} \
-&& tar -xzf ${JAVA_FILE} \
-&& rm ${JAVA_FILE}
+RUN if [ "$CI_ARCH" = "amd64" ]; then \
+wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz -O java.tar.gz\; \
+elif [ "$CI_ARCH" = "arm64" ]; then \
+wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz -O java.tar.gz\; \
+fi;
+
+RUN tar -xzf java.tar.gz \
+&& rm java.tar.gz
 
 RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
 && rm ${MAVEN_FILE}
 
 RUN chmod +x /${MAVEN_DIRECTORY}/bin/mvn \
-&& chmod +x /${JAVA_DIRECTORY}/bin/java \
-&& chmod +x /${JAVA_DIRECTORY}/bin/javadoc \
+&& chmod +x /java/bin/java \
+&& chmod +x /java/bin/javadoc \
 && apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && java -version \
 && mvn -v \
