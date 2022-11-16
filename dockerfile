@@ -6,18 +6,17 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
 ENV MAVEN_VERSION=3.8.6
-ENV ARCH=x64
+ENV ARCH=undefined
 
 RUN if [ "$CI_ARCH" = "amd64" ]; then \
 export ARCH=x64; \
 elif [ "$CI_ARCH" = "arm64" ]; then \
+echo "ARM64"; \
 export ARCH=aarch64; \
 fi;
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCH}
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
-RUN echo ${ARCH}
-RUN echo ${JAVA_FILE}
 ENV JAVA_URL=https://cdn.azul.com/zulu/bin/${JAVA_FILE}
 ENV JAVA_HOME=/${JAVA_DIRECTORY}
 RUN echo ${JAVA_URL}
