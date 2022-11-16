@@ -17,6 +17,7 @@ export ARCH=aarch64; \
 echo $ARCH; \
 fi;
 
+RUN echo ${ARCH};
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_$ARCH
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
 ENV JAVA_URL=https://cdn.azul.com/zulu/bin/${JAVA_FILE}
