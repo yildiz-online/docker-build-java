@@ -22,7 +22,7 @@ RUN if [ "$CI_ARCH" = "amd64" ]; then wget -q https://cdn.azul.com/zulu/bin/zulu
     elif [ "$CI_ARCH" = "arm64" ]; then wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz -O java.tar.gz; \
     fi
 
-RUN tar -xzf java.tar.gz \
+RUN tar -xzf java.tar.gz -C java \
 && rm java.tar.gz
 
 RUN ls -l
