@@ -14,7 +14,7 @@ elif [ "$CI_ARCH" = "arm64" ]; then \
 export ARCH=aarch64; \
 fi;
 
-ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_$ARCH
+ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCH}
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
 RUN echo ${ARCH}
 RUN echo ${JAVA_FILE}
