@@ -12,6 +12,7 @@ RUN if [ "$CI_ARCH" = "amd64" ]; then \
 export ARCH=x64; \
 elif [ "$CI_ARCH" = "arm64" ]; then \
 echo "ARM64"; \
+echo $ARCH; \
 export ARCH=aarch64; \
 fi;
 
