@@ -3,7 +3,7 @@ FROM ubuntu:jammy
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 ENV JAVA_ZULU_VERSION=17.38.21
 ENV JAVA_VERSION=17.0.5
-ENV MAVEN_VERSION=3.8.6
+ENV MAVEN_VERSION=3.8.7
 
 ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
