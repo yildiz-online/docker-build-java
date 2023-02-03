@@ -8,7 +8,7 @@ RUN touch arch
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then echo "x64" > arch; elif [ "$TARGETARCH" = "arm64" ]; then echo "aarch64" > arch; fi
 
-RUN ls -l
+RUN ls -lh
 
 ENV ARCH="$(<arch)"
 
