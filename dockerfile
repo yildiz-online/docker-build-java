@@ -6,7 +6,9 @@ ARG TARGETARCH
 
 RUN touch arch
 
-RUN if [ "$TARGETARCH" = "amd64" ]; then echo "x64" > arch >> arch; elif [ "$TARGETARCH" = "arm64" ]; then echo "aarch64" > arch; fi
+RUN if [ "$TARGETARCH" = "amd64" ]; then echo "x64" > arch; elif [ "$TARGETARCH" = "arm64" ]; then echo "aarch64" > arch; fi
+
+RUN ls
 
 ENV ARCH="$(<arch)"
 
