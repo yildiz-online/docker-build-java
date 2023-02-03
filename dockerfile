@@ -33,7 +33,10 @@ wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERS
 && chmod +x zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64/bin/javadoc \
 && JAVA_HOME=zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64; fi
 
+RUN echo ${JAVA_HOME}
+RUN echo ${PATH}
 RUN PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
+RUN echo ${PATH}
 
 RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
