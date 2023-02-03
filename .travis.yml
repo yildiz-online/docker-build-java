@@ -1,20 +1,22 @@
+arch:
+  - amd64
+os: linux
 dist: jammy
-
 git:
   depth: false
 
-os: linux
-language: generic
+language: bash
 
 services:
   - docker
 
 before_install:
-  - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
-  - docker build -t moussavdb/build-java:17 .
-script:
-  - docker images moussavdb/build-java
+  - mkdir -vp ~/.docker/cli-plugins/
+  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.10.2/buildx-v0.10.2.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+  - chmod a+x ~/.docker/cli-plugins/docker-buildx
   
-after_success:
-  - docker push moussavdb/build-java:17;
+script:
+  - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
+  - docker buildx create --use
+  - docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag moussavdb/build-java:17 --tag moussavdb/build-java:lts .
 
