@@ -20,10 +20,8 @@ ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=aarch64; fi \
-&& echo https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz \
-&& echo zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz
 && wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz --directory /{JAVA_DIRECTORY} \
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz --directory /${JAVA_DIRECTORY} \
 && rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz
 
 RUN wget -q ${MAVEN_URL} \
