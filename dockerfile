@@ -1,11 +1,15 @@
 FROM ubuntu:jammy
+ARG TARGETPLATFORM
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
+
 ENV JAVA_ZULU_VERSION=17.40.19
 ENV JAVA_VERSION=17.0.6
 ENV MAVEN_VERSION=3.8.7
 
-ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=aarch64; fi \
+
+ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}
 ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
 ENV JAVA_URL=https://cdn.azul.com/zulu/bin/${JAVA_FILE}
 ENV JAVA_HOME=/${JAVA_DIRECTORY}
