@@ -17,6 +17,10 @@ ENV M2_HOME=/${MAVEN_DIRECTORY}
 
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
+ARG TARGETOS
+ARG TARGETARCH
+RUN echo "I'm building for $TARGETOS/$TARGETARCH"
+
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=aarch64; fi \
