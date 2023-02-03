@@ -7,12 +7,8 @@ ENV JAVA_ZULU_VERSION=17.40.19
 ENV JAVA_VERSION=17.0.6
 ENV MAVEN_VERSION=3.8.7
 
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=aarch64; fi
-
-ENV JAVA_DIRECTORY=/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}
-ENV JAVA_FILE=${JAVA_DIRECTORY}.tar.gz
-ENV JAVA_URL=https://cdn.azul.com/zulu/bin/${JAVA_FILE}
-ENV JAVA_HOME=/${JAVA_DIRECTORY}
+ENV JAVA_DIRECTORY=/jdk-${JAVA_VERSION}
+ENV JAVA_HOME=${JAVA_DIRECTORY}
 
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
@@ -24,9 +20,10 @@ ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
-RUN wget -q ${JAVA_URL} \
-&& tar -xzf ${JAVA_FILE} \
-&& rm ${JAVA_FILE}
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x64; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=aarch64; fi \
+&& wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz \
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz --directory /{JAVA_DIRECTORY} \
+&& rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz
 
 RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
