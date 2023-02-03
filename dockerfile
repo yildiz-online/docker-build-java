@@ -8,40 +8,39 @@ ENV JAVA_ZULU_VERSION=17.40.19
 ENV JAVA_VERSION=17.0.6
 ENV MAVEN_VERSION=3.8.7
 
-ENV JAVA_DIRECTORY=/jdk-${JAVA_VERSION}
-ENV JAVA_HOME=${JAVA_DIRECTORY}
-
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
 ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
 ENV MAVEN_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
 ENV M2_HOME=/${MAVEN_DIRECTORY}
 
-ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
-
-
-
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
-
-RUN mkdir ${JAVA_DIRECTORY}
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
 wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz --directory ${JAVA_DIRECTORY} \
-&& rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz; fi
+&& mkdir zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64 \
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz \
+&& rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz \
+&& chmod +x zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64/bin/java \
+&& chmod +x zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64/bin/javadoc \
+&& JAVA_HOME=zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64; fi
 
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
 wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz --directory ${JAVA_DIRECTORY} \
-&& rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_${ARCHITECTURE}.tar.gz; fi
+&& mkdir zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64 \
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
+&& rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
+&& chmod +x zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64/bin/java \
+&& chmod +x zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64/bin/javadoc \
+&& JAVA_HOME=zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64; fi
+
+RUN PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
 RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
-&& rm ${MAVEN_FILE}
+&& rm ${MAVEN_FILE} \
+&& chmod +x ${MAVEN_DIRECTORY}/bin/mvn
 
-RUN chmod +x ${MAVEN_DIRECTORY}/bin/mvn \
-&& chmod +x ${JAVA_DIRECTORY}/bin/java \
-&& chmod +x ${JAVA_DIRECTORY}/bin/javadoc \
-&& apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
+RUN apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && java -version \
 && mvn -v \
 && mkdir /build-resources \
