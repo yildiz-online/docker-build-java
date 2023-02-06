@@ -38,6 +38,7 @@ RUN wget -q ${MAVEN_URL} \
 RUN apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && chmod +x jdk-17/bin/java \
 && chmod +x jdk-17/bin/javadoc \
+&& echo ${JAVA_HOME} \
 && java -version \
 && mvn -v \
 && mkdir /build-resources \
