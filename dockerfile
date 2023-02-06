@@ -22,12 +22,14 @@ RUN mkdir ${JAVA_HOME}
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
 wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz --transform s/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64/\${JAVA_HOME}/ \
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz \
+&& mv zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64/ ${JAVA_HOME} \
 && rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz; fi
 
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
 wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz --transform s/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64/\${JAVA_HOME}/ \
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \ 
+&& mv zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64/ ${JAVA_HOME} \
 && rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz; fi
 
 RUN wget -q ${MAVEN_URL} \
