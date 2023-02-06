@@ -37,6 +37,8 @@ RUN wget -q ${MAVEN_URL} \
 && rm ${MAVEN_FILE} \
 && chmod +x ${MAVEN_DIRECTORY}/bin/mvn
 
+
+RUN cd ${JAVA_HOME} && ls 
 RUN apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && chmod +x ${JAVA_HOME}/bin/java \
 && chmod +x ${JAVA_HOME}/bin/javadoc \
