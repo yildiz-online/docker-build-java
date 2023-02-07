@@ -18,7 +18,6 @@ ENV JAVA_HOME=/jdk-17
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
-RUN mkdir ${JAVA_HOME}
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
 wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz \
@@ -37,8 +36,6 @@ RUN wget -q ${MAVEN_URL} \
 && rm ${MAVEN_FILE} \
 && chmod +x ${MAVEN_DIRECTORY}/bin/mvn
 
-
-RUN cd ${JAVA_HOME} && ls 
 RUN apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoclean \
 && chmod +x ${JAVA_HOME}/bin/java \
 && chmod +x ${JAVA_HOME}/bin/javadoc \
