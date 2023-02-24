@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:focal
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
@@ -7,7 +7,6 @@ ARG TARGETARCH
 ENV JAVA_ZULU_VERSION=17.40.19
 ENV JAVA_VERSION=17.0.6
 ENV MAVEN_VERSION=3.8.7
-
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
 ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz

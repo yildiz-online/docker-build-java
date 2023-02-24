@@ -9,6 +9,10 @@ language: bash
 
 services:
   - docker
+  
+arch:
+  - amd64
+  - arm64  
 
 before_install:
   - mkdir -vp ~/.docker/cli-plugins/
@@ -19,4 +23,3 @@ script:
   - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
   - docker buildx create --use
   - docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag moussavdb/build-java:17 --tag moussavdb/build-java:lts .
-
