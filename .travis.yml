@@ -9,10 +9,6 @@ language: bash
 
 services:
   - docker
-  
-arch:
-  - amd64
-  - arm64  
 
 before_install:
   - mkdir -vp ~/.docker/cli-plugins/
