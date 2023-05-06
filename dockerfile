@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
