@@ -3,7 +3,7 @@ FROM ubuntu:jammy
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ARG TARGETARCH
-https://cdn.azul.com/zulu/bin/zulu21.28.85-ca-jdk21.0.0-linux_x64.tar.gz
+
 ENV JAVA_ZULU_VERSION=21.28.85-ca
 ENV JAVA_VERSION=21.0.0
 ENV MAVEN_VERSION=3.9.4
