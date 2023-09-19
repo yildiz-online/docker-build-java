@@ -4,31 +4,31 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ARG TARGETARCH
 
-ENV JAVA_ZULU_VERSION=17.44.15
-ENV JAVA_VERSION=17.0.8
-ENV MAVEN_VERSION=3.9.3
+ENV JAVA_ZULU_VERSION=21.28.85-ca
+ENV JAVA_VERSION=21.0.0
+ENV MAVEN_VERSION=3.9.4
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
 ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
 ENV MAVEN_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
 ENV M2_HOME=/${MAVEN_DIRECTORY}
 
-ENV JAVA_HOME=/jdk-17
+ENV JAVA_HOME=/jdk-21
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
-wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz \
-&& mv zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64/ ${JAVA_HOME} \
-&& rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_x64.tar.gz; fi
+wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_x64.tar.gz \
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_x64.tar.gz \
+&& mv zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_x64/ ${JAVA_HOME} \
+&& rm zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_x64.tar.gz; fi
 
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
-wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \ 
-&& mv zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64/ ${JAVA_HOME} \
-&& rm zulu${JAVA_ZULU_VERSION}-ca-jdk${JAVA_VERSION}-linux_aarch64.tar.gz; fi
+wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \ 
+&& mv zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64/ ${JAVA_HOME} \
+&& rm zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz; fi
 
 RUN wget -q ${MAVEN_URL} \
 && tar -xzf ${MAVEN_FILE} \
