@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:22.04
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
