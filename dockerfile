@@ -1,11 +1,11 @@
-FROM ubuntu:jammy
+FROM ubuntu:noble
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ARG TARGETARCH
 
-ENV JAVA_ZULU_VERSION=21.32.17-ca
-ENV JAVA_VERSION=21.0.2
+ENV JAVA_ZULU_VERSION=21.34.19-ca
+ENV JAVA_VERSION=21.0.3
 ENV MAVEN_VERSION=3.9.6
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
