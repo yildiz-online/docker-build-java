@@ -41,7 +41,7 @@ if [ "$NO_DEPLOY" = "true" ]; then
   fi
 else
   if [ "$BRANCH" = "develop" ]; then
-    openssl aes-256-cbc -pass pass:${OPENSSL_PWD} -in ../build-resources/private-key.gpg.enc -out private-key.gpg -d && gpg --import --batch private-key.gpg && mvn -V -s ../build-resources/settings.xml org.jacoco:jacoco-maven-plugin:prepare-agent clean deploy sonar:sonar $MVN_PARAMS -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=${SONAR_ORGANIZATION} -Dsonar.login=${SONAR}
+    openssl aes-256-cbc -pass pass:${OPENSSL_PWD} -in ../build-resources/private-key.gpg.enc -out private-key.gpg -d && gpg --import --batch private-key.gpg && mvn -V -s ../build-resources/settings.xml org.jacoco:jacoco-maven-plugin:prepare-agent clean deploy sonar:sonar $MVN_PARAMS -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=${SONAR_ORGANIZATION} -Dsonar.token=${SONAR}
   elif [ "$BRANCH" = "master" ]; then
     openssl aes-256-cbc -pass pass:${OPENSSL_PWD} -in ../build-resources/private-key.gpg.enc -out private-key.gpg -d && gpg --import --batch private-key.gpg && mvn -V -U -s ../build-resources/settings.xml clean deploy $MVN_PARAMS
   else
