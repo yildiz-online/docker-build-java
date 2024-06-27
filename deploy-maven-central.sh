@@ -33,7 +33,7 @@ echo "Building $BRANCH branch"
 
 if [ "$NO_DEPLOY" = "true" ]; then
   if [ "$BRANCH" = "develop" ]; then
-    mvn -V -s ../build-resources/settings.xml org.jacoco:jacoco-maven-plugin:prepare-agent clean package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR $MVN_PARAMS
+    mvn -V -s ../build-resources/settings.xml org.jacoco:jacoco-maven-plugin:prepare-agent clean package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.token=$SONAR $MVN_PARAMS
   elif [ "$BRANCH" = "master" ]; then
     mvn -V -s ../build-resources/settings.xml clean package $MVN_PARAMS
   else
