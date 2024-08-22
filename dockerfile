@@ -4,7 +4,7 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ARG TARGETARCH
 
-ENV JAVA_ZULU_VERSION=22.35.15-ca
+ENV JAVA_ZULU_VERSION=22.32.15-ca
 ENV JAVA_VERSION=22.0.2
 ENV MAVEN_VERSION=3.9.9
 
