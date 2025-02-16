@@ -23,7 +23,6 @@
   -->
 
 <settings>
-  <localRepository>/m2</localRepository>
   <servers>
     <server>
       <id>ossrh</id>
