@@ -1,4 +1,4 @@
-FROM ubuntu:noble
+FROM ubuntu:25.04
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
@@ -26,7 +26,7 @@ wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION
 
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
 wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \ 
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
 && mv zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64/ ${JAVA_HOME} \
 && rm zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz; fi
 
@@ -47,9 +47,9 @@ RUN apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoc
 # Set the locale
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
 && locale-gen
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
 RUN ssh-keyscan -p 55022 -H yildiz-games.be >> ~/.ssh/known_hosts
 COPY settings.xml build-resources
@@ -61,4 +61,3 @@ RUN chmod +x /build-resources/deploy-maven-central.sh
 WORKDIR /src
 
 ENTRYPOINT ../build-resources/deploy-maven-central.sh
-
