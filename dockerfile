@@ -4,8 +4,8 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ARG TARGETARCH
 
-ENV JAVA_ZULU_VERSION=24.32.13-ca
-ENV JAVA_VERSION=24.0.2
+ENV JAVA_ZULU_VERSION=25.28.85-ca
+ENV JAVA_VERSION=25.0.0
 ENV MAVEN_VERSION=3.9.11
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
@@ -13,7 +13,7 @@ ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
 ENV MAVEN_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
 ENV M2_HOME=/${MAVEN_DIRECTORY}
 
-ENV JAVA_HOME=/jdk-21
+ENV JAVA_HOME=/jdk-25
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
