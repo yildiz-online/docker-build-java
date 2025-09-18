@@ -53,7 +53,6 @@ ENV LC_ALL=en_US.UTF-8
 
 RUN ssh-keyscan -p 55022 -H yildiz-games.be >> ~/.ssh/known_hosts
 COPY settings.xml build-resources
-COPY private-key.gpg.enc build-resources
 COPY deploy-maven-central.sh build-resources
 
 RUN chmod +x /build-resources/deploy-maven-central.sh
