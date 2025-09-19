@@ -29,26 +29,12 @@
       <username>${env.OSSRH_USER_TOKEN}</username>
       <password>${env.OSSRH_PWD_TOKEN}</password>
     </server>
-    <server>
-      <id>nexus-release</id>
-      <username>${env.REPO_USER}</username>
-      <password>${env.REPO_PASSWORD}</password>
-    </server>
-    <server>
-      <id>nexus-snapshots</id>
-      <username>${env.REPO_USER}</username>
-      <password>${env.REPO_PASSWORD}</password>
-    </server>
   </servers>
   <profiles>
     <profile>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
-      <properties>
-        <gpg.keyname>${env.GPG_KEY}</gpg.keyname>
-        <gpg.passphrase>${env.GPG_PWD}</gpg.passphrase>
-      </properties>
       <repositories>
         <repository>
           <id>ossrh-snapshot</id>
@@ -62,20 +48,7 @@
           <snapshots><enabled>false</enabled></snapshots>
           <url>https://oss.sonatype.org/content/repositories/releases</url>
         </repository>
-        <repository>
-          <id>nexus-releases</id>
-          <releases><enabled>true</enabled></releases>
-          <snapshots><enabled>false</enabled></snapshots>
-          <url>https://nexus.yildiz-games.be/repository/retro-releases</url>
-        </repository>
-        <repository>
-          <id>nexus-snapshots</id>
-          <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
-          <releases><enabled>false</enabled></releases>
-          <url>https://nexus.yildiz-games.be/repository/retro-snapshots/</url>
-        </repository>
       </repositories>
     </profile>
   </profiles>
 </settings>
-

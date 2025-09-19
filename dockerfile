@@ -26,7 +26,7 @@ wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION
 
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
 wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
-&& tar -xzf zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \ 
+&& tar -xzf zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz \
 && mv zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64/ ${JAVA_HOME} \
 && rm zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_aarch64.tar.gz; fi
 
@@ -53,7 +53,6 @@ ENV LC_ALL=en_US.UTF-8
 
 RUN ssh-keyscan -p 55022 -H yildiz-games.be >> ~/.ssh/known_hosts
 COPY settings.xml build-resources
-COPY private-key.gpg.enc build-resources
 COPY deploy-maven-central.sh build-resources
 
 RUN chmod +x /build-resources/deploy-maven-central.sh
@@ -61,4 +60,3 @@ RUN chmod +x /build-resources/deploy-maven-central.sh
 WORKDIR /src
 
 ENTRYPOINT ../build-resources/deploy-maven-central.sh
-
