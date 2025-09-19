@@ -15,7 +15,7 @@ SECRETS=$(curl -sS -H "X-Vault-Token: $TOKEN" -X GET https://vault.yildiz-games.
 #Some variables need to be exported as env variable to be used by external processes.
 
 export GH_TOKEN=$(echo ${SECRETS} | jq -r '.data.GH_TOKEN')
-export SIGN_KEY=$(echo ${SECRETS} | jq -r '.data.OSSRH_GPG_KEY' | base64 --decode)
+export SIGN_KEY="$(echo "${SECRETS}" | jq -r '.data.OSSRH_GPG_KEY' | base64 --decode | sed ':a;N;$!ba;s/\r/\n/g')"
 export SIGN_KEY_PASS=$(echo ${SECRETS} | jq -r '.data.OSSRH_GPG_PWD')
 export OSSRH_USER_TOKEN=$(echo ${SECRETS} | jq -r '.data.OSSRH_USER_TOKEN')
 export OSSRH_PWD_TOKEN=$(echo ${SECRETS} | jq -r '.data.OSSRH_PWD_TOKEN')
