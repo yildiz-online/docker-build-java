@@ -16,7 +16,7 @@ ENV M2_HOME=/${MAVEN_DIRECTORY}
 ENV JAVA_HOME=/jdk-25
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
-RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client
+RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client git
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
 wget -q https://cdn.azul.com/zulu/bin/zulu${JAVA_ZULU_VERSION}-jdk${JAVA_VERSION}-linux_x64.tar.gz \
