@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM ubuntu:26.10
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
@@ -6,7 +6,7 @@ ARG TARGETARCH
 
 ENV JAVA_ZULU_VERSION=25.36.205-ca
 ENV JAVA_VERSION=25.0.4.1
-ENV MAVEN_VERSION=3.9.16
+ENV MAVEN_VERSION=3.10.0
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
 ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
