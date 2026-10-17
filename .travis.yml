@@ -7,6 +7,11 @@ git:
 
 language: bash
 
+env:
+  matrix:
+    - JAVA_ZULU_VERSION="25.36.205-ca" JAVA_VERSION="25.0.4.1" JAVA_MAJOR_VERSION="25" JAVA_RELEASE_TYPE="lts"
+    - JAVA_ZULU_VERSION="27.28.101-ca" JAVA_VERSION="27.0.0" JAVA_MAJOR_VERSION="27" JAVA_RELEASE_TYPE="sts"
+
 services:
   - docker
 
@@ -15,8 +20,9 @@ before_install:
   - BUILDX_VERSION=$(curl -fsSL https://api.github.com/repos/docker/buildx/releases/latest | grep '"tag_name":' | head -1 | cut -d '"' -f 4)
   - curl -fsSL "https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.linux-amd64" -o ~/.docker/cli-plugins/docker-buildx
   - chmod +x ~/.docker/cli-plugins/docker-buildx
-  
+
 script:
-  - docker login -u="moussavdb" --password-stdin <<< "$DOCKER_PASSWORD";
+  - echo "$DOCKER_PASSWORD" | docker login -u "moussavdb" --password-stdin
   - docker buildx create --use
-  - docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag moussavdb/build-java:25 --tag moussavdb/build-java:lts .
+  - docker buildx inspect --bootstrap
+  - docker buildx build --build-arg JAVA_ZULU_VERSION="$JAVA_ZULU_VERSION" --build-arg JAVA_VERSION="$JAVA_VERSION" --push --platform linux/arm64/v8,linux/amd64 --tag "moussavdb/build-java:$JAVA_MAJOR_VERSION" --tag "moussavdb/build-java:$JAVA_RELEASE_TYPE" .
