@@ -16,6 +16,8 @@ ENV M2_HOME=/${MAVEN_DIRECTORY}
 ENV JAVA_HOME=/jdk-25
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y -q wget gnupg2 curl jq locales zip openssh-client git
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
@@ -40,9 +42,9 @@ RUN apt-get remove -y -q wget && apt-get -q -y autoremove && apt-get -y -q autoc
 && chmod +x ${JAVA_HOME}/bin/javadoc \
 && java -version \
 && mvn -v \
-&& mkdir /build-resources \
-&& mkdir /root/.ssh \
-&& mkdir /src
+&& mkdir -p /build-resources \
+&& mkdir -p /root/.ssh \
+&& mkdir -p /src
 
 # Set the locale
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
