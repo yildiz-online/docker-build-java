@@ -4,8 +4,8 @@ LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ARG TARGETARCH
 
-ENV JAVA_ZULU_VERSION=25.36.205-ca
-ENV JAVA_VERSION=25.0.4.1
+ARG JAVA_ZULU_VERSION
+ARG JAVA_VERSION
 ENV MAVEN_VERSION=3.10.0
 
 ENV MAVEN_DIRECTORY=apache-maven-${MAVEN_VERSION}
@@ -13,7 +13,7 @@ ENV MAVEN_FILE=${MAVEN_DIRECTORY}-bin.tar.gz
 ENV MAVEN_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILE}
 ENV M2_HOME=/${MAVEN_DIRECTORY}
 
-ENV JAVA_HOME=/jdk-25
+ENV JAVA_HOME=/jdk
 ENV PATH="${PATH}:${JAVA_HOME}/bin:${M2_HOME}/bin"
 
 ENV DEBIAN_FRONTEND=noninteractive
